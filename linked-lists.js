@@ -27,3 +27,25 @@ class linkedList {
             }
         }
     }
+    append = (value) => {
+        if (this.#node === null)
+        {
+            this.#node = new nodeUnit(value);
+            
+        }
+        else {
+            let traverseNode = this.#node;
+            while (traverseNode.nextNode !== null)
+            {
+                traverseNode = traverseNode.nextNode;
+            }
+            traverseNode.nextNode = new nodeUnit(value);
+        }
+        ++this.#size;
+    }
+    prepend = (value) => {
+        const newNode = new nodeUnit(value);
+        newNode.nextNode = this.#node;
+        this.#node = newNode;
+        ++this.#size;
+    }
