@@ -128,3 +128,6 @@ class linkedList {
     return result;
   };
 }
+
+const list = new linkedList([1, 2, 3, 4, 5]);
+console.log(list.toString());
