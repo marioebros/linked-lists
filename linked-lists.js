@@ -49,3 +49,34 @@ class linkedList {
         this.#node = newNode;
         ++this.#size;
     }
+    insertAt = (val, index) => {
+        if (index == 0) return this.prepend(val);
+        if (index == this.#size) return this.append(val);
+        if (index >= this.#size) throw new Error("Invalid Index");
+        if (val == undefined || index == undefined) throw new Error("Invalid arguments passed");
+
+        let traverseNode = this.#node;
+        for (let i = 1; i < index; ++i)
+        {
+            traverseNode = traverseNode.nextNode;
+        }
+        let newNode = new nodeUnit(val);
+        newNode.nextNode = traverseNode.nextNode;
+        traverseNode.nextNode = newNode;
+    }
+    removeAt = (index) => {
+        if (index == this.#size - 1) return this.pop();
+        if (index < 0 || index >= this.#size || index == undefined) throw new Error("Invalid Index");
+        if (index == 0)
+        {
+            this.#node = this.#node.nextNode;
+        } else {
+            let traverseNode = this.#node;
+            for (let i = 1; i < index; ++i)
+            {
+                traverseNode = traverseNode.nextNode;
+            }
+            traverseNode.nextNode = traverseNode.nextNode.nextNode;
+        }
+        --this.#size;
+    }
